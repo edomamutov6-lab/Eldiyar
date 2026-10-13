@@ -17,6 +17,8 @@
       --muted: #9ba9bc;
       --lime: #c6f277;
       --blue: #82aaff;
+      --card-action: #263348;
+      --card-action-hover: #354663;
       font-family: Inter, "Segoe UI", Arial, sans-serif;
     }
     * { box-sizing: border-box; }
@@ -74,19 +76,26 @@
       border-radius: 12px;
       background: var(--tile);
       color: inherit;
-      text-decoration: none;
       transition: transform .2s ease, border-color .2s ease, background .2s ease;
     }
-    .assignment:hover, .assignment:focus-visible { transform: translateY(-4px); border-color: var(--lime); background: #1b293a; outline: none; }
-    .assignment:focus-visible { box-shadow: 0 0 0 3px #c6f27755; }
+    .assignment:hover { transform: translateY(-3px); border-color: #657891; background: #1b293a; }
     .number { color: var(--lime); font: 11px "Courier New", monospace; letter-spacing: .12em; }
-    .assignment h3 { margin: 24px 0 9px; font-size: 23px; letter-spacing: -.04em; }
-    .assignment p { max-width: 330px; margin: 0 0 24px; color: var(--muted); font-size: 12px; line-height: 1.7; }
-    .open-link { margin-top: auto; display: inline-flex; align-items: center; gap: 9px; font-size: 12px; font-weight: 700; }
-    .open-link b { color: var(--lime); font-size: 18px; transition: transform .2s ease; }
-    .assignment:hover .open-link b { transform: translate(3px, -3px); }
-    .assignment.second .number, .assignment.second .open-link b { color: var(--blue); }
-    .assignment.second:hover, .assignment.second:focus-visible { border-color: var(--blue); }
+    .assignment h3 { margin: 15px 0 9px; font-size: 23px; letter-spacing: -.04em; }
+    .assignment p { max-width: 330px; margin: 0 0 17px; color: var(--muted); font-size: 12px; line-height: 1.7; }
+    .assignment-actions { width: 100%; margin-top: auto; display: grid; justify-items: start; gap: 13px; }
+    .solution-button { min-height: 41px; padding: 0 13px; display: inline-flex; align-items: center; gap: 16px; border: 1px solid #475873; border-radius: 6px; background: var(--card-action); color: var(--text); font-size: 11px; font-weight: 700; text-decoration: none; transition: background .18s ease, border-color .18s ease; }
+    .solution-button:hover { border-color: #97b568; background: var(--card-action-hover); }
+    .solution-button:focus-visible, .assignment-link:focus-visible, .resource-link:focus-visible { outline: 3px solid var(--lime); outline-offset: 3px; }
+    .solution-button b { color: var(--lime); font-size: 17px; }
+    .assignment.second .solution-button b { color: var(--blue); }
+    .assignment-link { display: inline-flex; align-items: center; gap: 7px; color: #b7c3d5; font-size: 10px; line-height: 1.5; text-underline-offset: 3px; }
+    .assignment-link:hover { color: var(--lime); }
+    .brief-note { color: var(--muted); font-size: 10px; line-height: 1.55; }
+    .resources { margin-top: 16px; padding: 22px clamp(20px, 4vw, 34px); border: 1px solid var(--line); border-radius: 12px; background: #111927b8; }
+    .resources-heading { margin: 0 0 13px; font-size: 12px; }
+    .resource-links { display: flex; flex-wrap: wrap; gap: 9px; }
+    .resource-link { min-height: 34px; padding: 0 11px; display: inline-flex; align-items: center; gap: 7px; border: 1px solid #344158; border-radius: 5px; color: #c6d1e0; font-size: 10px; text-decoration: none; }
+    .resource-link:hover { border-color: #71844d; color: var(--lime); }
     footer { display: flex; justify-content: space-between; gap: 16px; padding: 20px 4px 0; color: #78879c; font-size: 11px; }
     footer strong { color: #dbe3ef; font-weight: 600; }
     @media (max-width: 600px) {
@@ -115,25 +124,43 @@
           <span>01 — 03 / SELECT PROJECT</span>
         </div>
         <div class="cards">
-          <a class="assignment" href="assignment-1/index.html" aria-label="Open Assignment 1 website">
+          <article class="assignment">
             <span class="number">PROJECT / 01</span>
             <h3>Assignment 1</h3>
-            <p>Build an arithmetic sequence with this interactive version of the available W4 exercise.</p>
-            <span class="open-link">Open website <b aria-hidden="true">↗</b></span>
-          </a>
-          <a class="assignment second" href="assignment-2/index.html" aria-label="Open Assignment 2 website">
+            <p>Explore an interactive solution for the W4 arithmetic-sequence practice exercise.</p>
+            <div class="assignment-actions">
+              <a class="solution-button" href="assignment-1/index.html">Open completed solution <b aria-hidden="true">↗</b></a>
+              <a class="assignment-link" href="course-materials/GeometricSequencee.java" download>View and download the W4 Java source <span aria-hidden="true">↓</span></a>
+            </div>
+          </article>
+          <article class="assignment second">
             <span class="number">PROJECT / 02</span>
             <h3>Assignment 2</h3>
-            <p>The W4 Java solution, with a step-by-step algorithm explanation and a sample output.</p>
-            <span class="open-link">Open website <b aria-hidden="true">↗</b></span>
-          </a>
-          <a class="assignment third" href="week2-html/index.html" aria-label="Open Assignment 3 - Week 2 HTML student profile">
+            <p>Review the Java source code, input validation, and step-by-step W4 solution.</p>
+            <div class="assignment-actions">
+              <a class="solution-button" href="assignment-2/index.html">Open completed solution <b aria-hidden="true">↗</b></a>
+              <a class="assignment-link" href="course-materials/GeometricSequencee.java" download>View and download the W4 Java source <span aria-hidden="true">↓</span></a>
+            </div>
+          </article>
+          <article class="assignment third">
             <span class="number">PROJECT / 03</span>
-            <h3>Assignment 3 · HTML</h3>
-            <p>An English student profile page with semantic HTML, a custom image, social links, and an interactive contact form.</p>
-            <span class="open-link">Open website <b aria-hidden="true">↗</b></span>
-          </a>
+            <h3>Assignment 3 · Student Profile</h3>
+            <p>An English student profile with semantic HTML, a portrait, social media, and a contact form.</p>
+            <div class="assignment-actions">
+              <a class="solution-button" href="week2-html/index.html">Open completed solution <b aria-hidden="true">↗</b></a>
+              <a class="assignment-link" href="course-materials/Week-2-HTML-Basics.pdf#page=18" target="_blank" rel="noopener noreferrer">Read the original assignment brief (page 18) <span aria-hidden="true">↗</span></a>
+            </div>
+          </article>
         </div>
+      </section>
+      <section class="resources" aria-labelledby="resources-title">
+        <h2 class="resources-heading" id="resources-title">Course materials and references</h2>
+        <div class="resource-links">
+          <a class="resource-link" href="course-materials/Introduction-to-Web-Technologies.pdf" target="_blank" rel="noopener noreferrer">Web Technologies lecture <span aria-hidden="true">↗</span></a>
+          <a class="resource-link" href="course-materials/Week-2-HTML-Basics.pdf" target="_blank" rel="noopener noreferrer">Week 2 HTML Basics slides <span aria-hidden="true">↗</span></a>
+          <a class="resource-link" href="course-materials/HTML-Cheat-Sheet.pdf" target="_blank" rel="noopener noreferrer">HTML reference cheat sheet <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="brief-note">The provided Web Technologies slides and HTML cheat sheet do not contain additional assignment briefs. The specific Student Profile requirements are on page 18 of the HTML Basics PDF.</p>
       </section>
     </main>
     <footer><span>JAVA / COURSEWORK</span><strong>Mamutov Eldiyar</strong></footer>
